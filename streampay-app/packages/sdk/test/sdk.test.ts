@@ -7,7 +7,7 @@ import {
   CONTRACT_ERROR_MESSAGES,
   StreamPayClient,
   USDC_DECIMALS,
-} from "../src/index.js";
+} from "../dist/index.js";
 
 test("parseUnits converts human units to base stroops", () => {
   assert.equal(parseUnits("1"), 10_000_000n);
