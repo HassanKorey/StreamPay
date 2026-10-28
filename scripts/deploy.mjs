@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
+import dns from "dns";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+
+dns.setDefaultResultOrder("ipv4first");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -26,7 +29,21 @@ const RPC_URL = "https://soroban-testnet.stellar.org";
 const NETWORK_PASSPHRASE = "Test SDF Network ; September 2015";
 const server = new rpc.Server(RPC_URL);
 
-// Admin secret loaded strictly from environment variable
+// Admin secret loaded strictly from environment variable or local .env.local
+if (!process.env.STELLAR_ADMIN_SECRET) {
+  const envPath = path.resolve(__dirname, "../.env.local");
+  if (fs.existsSync(envPath)) {
+    const lines = fs.readFileSync(envPath, "utf-8").split("\n");
+    for (const line of lines) {
+      const match = line.match(/^\s*STELLAR_ADMIN_SECRET\s*=\s*(.*)\s*$/);
+      if (match) {
+        process.env.STELLAR_ADMIN_SECRET = match[1].trim().replace(/^["']|["']$/g, "");
+        break;
+      }
+    }
+  }
+}
+
 const ADMIN_SECRET = process.env.STELLAR_ADMIN_SECRET;
 if (!ADMIN_SECRET) {
   console.error("Error: STELLAR_ADMIN_SECRET environment variable is required to deploy.");
