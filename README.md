@@ -88,6 +88,38 @@ pnpm --filter streampay-web dev
 
 ---
 
+## Deployed Testnet Deployment
+
+StreamPay is deployed and active on Stellar Soroban Testnet:
+
+| Resource | Address / ID |
+|---|---|
+| **StreamPay Contract** | [`CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA`](https://stellar.expert/explorer/testnet/contract/CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA) |
+| **SEP-41 USDC Token** | [`CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK`](https://stellar.expert/explorer/testnet/contract/CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK) |
+| **Admin Deployer** | [`GAHYU5YGHEOI3MKA2MLW2O46YY74SHBLC4JTVGWN36LH7LL7FFF4O6SS`](https://stellar.expert/explorer/testnet/account/GAHYU5YGHEOI3MKA2MLW2O46YY74SHBLC4JTVGWN36LH7LL7FFF4O6SS) |
+| **Testnet RPC** | `https://soroban-testnet.stellar.org` |
+| **Testnet Network Passphrase** | `Test SDF Network ; September 2015` |
+
+---
+
+## Live Deployment (Vercel)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HassanKorey/StreamPay&root-directory=streampay-app/apps/web&env=NEXT_PUBLIC_RPC_URL,NEXT_PUBLIC_NETWORK_PASSPHRASE,NEXT_PUBLIC_CONTRACT_ID,NEXT_PUBLIC_USDC_ADDRESS,NEXT_PUBLIC_HORIZON_URL)
+
+To deploy the web application manually:
+
+1. Import the repository on [Vercel](https://vercel.com/new).
+2. Set the **Root Directory** to `streampay-app/apps/web`.
+3. Add the following Environment Variables:
+   - `NEXT_PUBLIC_RPC_URL`: `https://soroban-testnet.stellar.org`
+   - `NEXT_PUBLIC_NETWORK_PASSPHRASE`: `Test SDF Network ; September 2015`
+   - `NEXT_PUBLIC_CONTRACT_ID`: `CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA`
+   - `NEXT_PUBLIC_USDC_ADDRESS`: `CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK`
+   - `NEXT_PUBLIC_HORIZON_URL`: `https://horizon-testnet.stellar.org`
+4. Deploy!
+
+---
+
 ## Demo Script
 
 1. **Connect Freighter**: Connect wallet to Stellar Testnet.

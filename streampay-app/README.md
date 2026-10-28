@@ -26,8 +26,8 @@ Configure these in `apps/web/.env.local` or in deployment settings (e.g. Vercel)
 |---|---|---|
 | `NEXT_PUBLIC_RPC_URL` | Soroban RPC endpoint | `https://soroban-testnet.stellar.org` |
 | `NEXT_PUBLIC_NETWORK_PASSPHRASE` | Network passphrase | `Test SDF Network ; September 2015` |
-| `NEXT_PUBLIC_CONTRACT_ID` | Deployed StreamPay contract ID | `CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM` |
-| `NEXT_PUBLIC_USDC_ADDRESS` | SEP-41 USDC token address | `CBIELTK6YBZJU5UP2WWQEUCYJLPU6QXN54EX62HRS2T77AZ54K3K64TG` |
+| `NEXT_PUBLIC_CONTRACT_ID` | Deployed StreamPay contract ID | `C...` |
+| `NEXT_PUBLIC_USDC_ADDRESS` | SEP-41 USDC token address | `C...` |
 | `NEXT_PUBLIC_HORIZON_URL` | Horizon endpoint | `https://horizon-testnet.stellar.org` |
 
 ---

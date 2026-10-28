@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd streampay-app && pnpm --filter @streampay/sdk build && pnpm --filter streampay-web build",
+  "outputDirectory": "streampay-app/apps/web/.next",
+  "framework": "nextjs"
+}
