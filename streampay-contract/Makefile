@@ -2,7 +2,7 @@
 
 # Build optimized WebAssembly contract
 build:
-	STELLAR_CLI_VERSION=30.0.0 cargo build --target wasm32v1-none --release
+	SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.0 cargo build --target wasm32v1-none --release
 
 # Run unit and integration tests
 test:

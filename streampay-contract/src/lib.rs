@@ -396,8 +396,8 @@ impl StreamPayContract {
         Ok(())
     }
 
-    /// Permissionless settlement: executes transfer of accrued payment to payee.
-    /// Can be called by anyone (keepers, payer, payee, frontend).
+    /// Settles accrued payment to payee.
+    /// Permissionless: anyone can trigger settlement for an active stream.
     pub fn execute_payment(env: Env, stream_id: u64) -> Result<i128, ContractError> {
         let mut stream = Self::get_stream(env.clone(), stream_id)?;
         let transferred = Self::settle_accrued_internal(&env, &mut stream)?;
@@ -495,11 +495,19 @@ impl StreamPayContract {
                 .ok_or(ContractError::NotInitialized)?;
 
             let token_client = soroban_sdk::token::TokenClient::new(env, &token_address);
+            let contract_address = env.current_contract_address();
+
+            // Try transfer_from first (permissionless via payer allowance to contract), then fallback to direct transfer
             if token_client
-                .try_transfer(&stream.payer, &stream.payee, &amount)
+                .try_transfer_from(&contract_address, &stream.payer, &stream.payee, &amount)
                 .is_err()
             {
-                return Err(ContractError::InsufficientBalance);
+                if token_client
+                    .try_transfer(&stream.payer, &stream.payee, &amount)
+                    .is_err()
+                {
+                    return Err(ContractError::InsufficientBalance);
+                }
             }
 
             let from_ledger = stream.last_paid_ledger;
