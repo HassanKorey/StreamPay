@@ -1,0 +1,11 @@
+{
+  "name": "streampay-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter @streampay/sdk build && pnpm --filter streampay-web build",
+    "dev": "pnpm --filter streampay-web dev",
+    "lint": "pnpm --filter @streampay/sdk lint && pnpm --filter streampay-web lint",
+    "test": "pnpm --filter @streampay/sdk test"
+  }
+}
