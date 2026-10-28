@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Stellar Soroban Documentation
+    url: https://soroban.stellar.org/docs
+    about: Read official documentation on Soroban smart contracts.
+  - name: Drips Wave 11 Maintainers
+    url: https://github.com/HassanKorey/StreamPay
+    about: StreamPay discussions, roadmap, and grant progress.

@@ -1,0 +1,36 @@
+name: 🎯 Good First Issue Task Proposal
+description: Propose an approachable, beginner-friendly task suitable for newcomers.
+title: "[Good First Issue]: "
+labels: ["good first issue", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Good First Issues help new developers onboard into the Stellar Soroban and StreamPay ecosystem.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Task Summary
+      description: What needs to be done?
+      placeholder: Brief description of the task...
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and Relevant Files
+      description: Link to specific files, functions, or UI components to modify.
+      placeholder: "e.g., streampay-app/apps/web/components/StreamControls.tsx"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will the contributor and reviewer know this is complete?
+      placeholder: |
+        - [ ] Feature implemented cleanly
+        - [ ] Unit tests added / updated
+        - [ ] TypeScript strict checks pass
+    validations:
+      required: true

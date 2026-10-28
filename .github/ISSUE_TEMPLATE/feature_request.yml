@@ -1,0 +1,50 @@
+name: ✨ Feature Request
+description: Propose a new feature, improvement, or architectural enhancement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We welcome proposals to expand StreamPay! Please explain the problem you are trying to solve and how this feature benefits users or builders.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Target Component
+      description: Which area does this feature target?
+      options:
+        - "Smart Contract (streampay-contract)"
+        - "TypeScript SDK (@streampay/sdk)"
+        - "Web dApp (apps/web)"
+        - "Documentation / Guides"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement / Motivation
+      description: Is your feature request related to a problem or limitation?
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution / Implementation Idea
+      description: Detailed description of what you want to happen.
+      placeholder: "Describe the proposed API, contract method, or UI design..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or features you've considered.
+    validations:
+      required: false
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to submit a Pull Request to implement this feature.
