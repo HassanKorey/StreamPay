@@ -161,14 +161,6 @@ NEXT_PUBLIC_HORIZON_URL=https://horizon-testnet.stellar.org
     path.resolve(__dirname, "../streampay-app/apps/web/.env.local"),
     envContent
   );
-  fs.writeFileSync(
-    path.resolve(__dirname, "../streampay-app/apps/web/.env.example"),
-    envContent
-  );
-  fs.writeFileSync(
-    path.resolve(__dirname, "../streampay-app/.env.example"),
-    envContent
-  );
   console.log("✅ Written .env.local with deployed contract addresses.");
 
   console.log("\n==========================================");
