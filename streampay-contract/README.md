@@ -8,7 +8,7 @@ StreamPay enables continuous value transfers of SEP-41 assets (e.g., USDC) with 
 
 ## Architecture & Features
 
-- **Standard Interface**: Built with Soroban SDK (`v30.0.0-rc.1`) targeting `wasm32v1-none`.
+- **Standard Interface**: Built with Soroban SDK (`v29.0.1`, Protocol 29 Testnet compatible) targeting `wasm32v1-none`.
 - **Single Responsibility**: No external contract dependencies except the SEP-41 Token interface (`soroban_sdk::token::TokenClient`).
 - **Deterministic Ledger Math**: Accrual is calculated per ledger tick:
   $$\text{amount\_owed} = \text{rate\_per\_second} \times (\text{current\_ledger} - \text{last\_paid\_ledger})$$
@@ -70,6 +70,19 @@ make build
 # Check contract syntax and types
 make check
 ```
+
+---
+
+## Deployed Testnet Contract
+
+| Property | Value |
+|---|---|
+| **Network** | Stellar Testnet (Protocol 29) |
+| **RPC Endpoint** | `https://soroban-testnet.stellar.org` |
+| **StreamPay Contract ID** | `CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA` |
+| **SEP-41 USDC Contract ID** | `CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK` |
+| **Admin Address** | `GAHYU5YGHEOI3MKA2MLW2O46YY74SHBLC4JTVGWN36LH7LL7FFF4O6SS` |
+| **Stellar Expert Explorer** | [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA) |
 
 ---
 
