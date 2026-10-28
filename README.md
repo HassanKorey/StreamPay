@@ -90,15 +90,25 @@ pnpm --filter streampay-web dev
 
 ## Deployed Testnet Deployment
 
-StreamPay is deployed and active on Stellar Soroban Testnet:
+StreamPay is deployed, initialized, and verified on Stellar Soroban Testnet:
 
 | Resource | Address / ID |
 |---|---|
-| **StreamPay Contract** | [`CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA`](https://stellar.expert/explorer/testnet/contract/CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA) |
-| **SEP-41 USDC Token** | [`CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK`](https://stellar.expert/explorer/testnet/contract/CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK) |
-| **Admin Deployer** | [`GAHYU5YGHEOI3MKA2MLW2O46YY74SHBLC4JTVGWN36LH7LL7FFF4O6SS`](https://stellar.expert/explorer/testnet/account/GAHYU5YGHEOI3MKA2MLW2O46YY74SHBLC4JTVGWN36LH7LL7FFF4O6SS) |
+| **StreamPay Contract** | [`CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
+| **SEP-41 USDC Token** | [`CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`](https://stellar.expert/explorer/testnet/contract/CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC) |
+| **Admin Deployer** | [`GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A`](https://stellar.expert/explorer/testnet/account/GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A) |
 | **Testnet RPC** | `https://soroban-testnet.stellar.org` |
 | **Testnet Network Passphrase** | `Test SDF Network ; September 2015` |
+
+### On-Chain Verification Cycle Proof
+
+Per the Wave 11 application requirements, an end-to-end on-chain verification cycle (`create_stream` → ledger accrual → `execute_payment`) was executed and confirmed on Stellar Testnet:
+
+| Stage | Details | Explorer Link |
+|---|---|---|
+| **Create Stream** | Stream #1 created at ledger 5435330 (0.1 USDC/s) | [`eb6ced1e...`](https://stellar.expert/explorer/testnet/tx/eb6ced1ef7243bcf9e0b10b7933846282d6acb253a192ed49013ddea95d378ed) |
+| **Ledger Accrual** | Accrued across 5 ledgers (5435330 → 5435335) | Testnet Consensus |
+| **Execute Payment** | Settled 5,000,000 stroops (0.5000 USDC) to Payee | [`b3125440...`](https://stellar.expert/explorer/testnet/tx/b3125440aaf97a527e19bf0e0d551948cd76767fa098b8d586687c3bf90537d0) |
 
 ---
 
@@ -113,8 +123,8 @@ To deploy the web application manually:
 3. Add the following Environment Variables:
    - `NEXT_PUBLIC_RPC_URL`: `https://soroban-testnet.stellar.org`
    - `NEXT_PUBLIC_NETWORK_PASSPHRASE`: `Test SDF Network ; September 2015`
-   - `NEXT_PUBLIC_CONTRACT_ID`: `CC2WFGXP3CFFFVCRODZB2BXHRXZIMUA3PTVAK3SMQC7LPKTDAFQU4GFA`
-   - `NEXT_PUBLIC_USDC_ADDRESS`: `CCQGOTGN6HTQE74XYERYSYVU57T5NPYWV5DLCROMB56OXTV6RSO6KIGK`
+   - `NEXT_PUBLIC_CONTRACT_ID`: `CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`
+   - `NEXT_PUBLIC_USDC_ADDRESS`: `CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`
    - `NEXT_PUBLIC_HORIZON_URL`: `https://horizon-testnet.stellar.org`
 4. Deploy!
 
