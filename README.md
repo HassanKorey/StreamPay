@@ -109,7 +109,12 @@ Per the Wave 11 application requirements, an end-to-end on-chain verification cy
 
 ---
 
-## Live Deployment (Vercel)
+## Live Deployment
+
+The StreamPay web application is deployed and live on Vercel:
+
+- **Live Web Application**: [https://stream-pay-orcin.vercel.app](https://stream-pay-orcin.vercel.app)
+- **Health Check Status**: [https://stream-pay-orcin.vercel.app/api/health](https://stream-pay-orcin.vercel.app/api/health)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HassanKorey/StreamPay&root-directory=streampay-app/apps/web&env=NEXT_PUBLIC_RPC_URL,NEXT_PUBLIC_NETWORK_PASSPHRASE,NEXT_PUBLIC_CONTRACT_ID,NEXT_PUBLIC_USDC_ADDRESS,NEXT_PUBLIC_HORIZON_URL)
 

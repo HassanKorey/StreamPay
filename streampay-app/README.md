@@ -1,6 +1,8 @@
 # StreamPay Monorepo (App & SDK)
 
 > Next.js 15 + Stellar SDK Frontend & TypeScript SDK for StreamPay streaming payments on Stellar Soroban.
+>
+> **Live dApp**: [https://stream-pay-orcin.vercel.app](https://stream-pay-orcin.vercel.app)
 
 StreamPay enables non-custodial per-second streaming transfers of SEP-41 USDC on Stellar. Either party can pause, resume, update the rate, or cancel. Settlement is permissionless: anyone can trigger transfers trustlessly.
 
