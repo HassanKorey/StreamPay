@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract:
+    name: Contract (Rust & Soroban)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+          targets: wasm32v1-none, wasm32-unknown-unknown
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: streampay-contract -> target
+
+      - name: Check Rust formatting
+        run: cargo fmt --all -- --check
+        working-directory: streampay-contract
+
+      - name: Run clippy
+        run: cargo clippy -- -D warnings
+        working-directory: streampay-contract
+
+      - name: Run unit & integration tests
+        run: cargo test --verbose
+        working-directory: streampay-contract
+
+      - name: Build WebAssembly release contract
+        run: SOROBAN_SDK_BUILD_SYSTEM_SUPPORTS_SPEC_SHAKING_V2=1 STELLAR_CLI_VERSION=30.0.0 cargo build --target wasm32v1-none --release
+        working-directory: streampay-contract
+
+  frontend:
+    name: SDK & Web App (TypeScript & Next.js)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: streampay-app
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: streampay-app/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck SDK
+        run: pnpm --filter @streampay/sdk typecheck
+
+      - name: Run SDK unit tests
+        run: pnpm --filter @streampay/sdk test
+
+      - name: Build SDK package
+        run: pnpm --filter @streampay/sdk build
+
+      - name: Build Next.js 15 production web app
+        env:
+          NEXT_PUBLIC_RPC_URL: https://soroban-testnet.stellar.org
+          NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_CONTRACT_ID: CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX
+          NEXT_PUBLIC_USDC_ADDRESS: CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC
+          NEXT_PUBLIC_HORIZON_URL: https://horizon-testnet.stellar.org
+        run: pnpm --filter streampay-web build
