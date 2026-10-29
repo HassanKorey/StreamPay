@@ -38,20 +38,20 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 sm:p-10">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-100 to-white dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm transition-colors duration-200">
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
         <div className="max-w-2xl relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
             <span>Stellar Soroban Wave 11</span>
-            <span className="w-1 h-1 rounded-full bg-emerald-400" />
+            <span className="w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400" />
             <span>Non-Custodial Streaming</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Continuous value transfer on Stellar.
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
             Stream USDC per second trustlessly. Settle accrued balances permissionlessly. Either party can pause, resume, or cancel anytime.
           </p>
 
@@ -69,8 +69,8 @@ export default function DashboardPage() {
       {/* Streams Header & Manual Add */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
         <div>
-          <h2 className="text-xl font-bold text-white">Tracked Streams</h2>
-          <p className="text-xs text-slate-400">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Tracked Streams</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Streams saved in your local index or created with your account.
           </p>
         </div>
@@ -82,11 +82,11 @@ export default function DashboardPage() {
             placeholder="Track stream ID (e.g. 1)"
             value={manualIdInput}
             onChange={(e) => setManualIdInput(e.target.value)}
-            className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder:text-slate-500 font-mono focus:outline-none focus:border-emerald-500 w-44"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 font-mono focus:outline-none focus:border-emerald-500 w-44 shadow-sm"
           />
           <button
             type="submit"
-            className="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-2 rounded-xl transition border border-slate-700"
+            className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold px-3 py-2 rounded-xl transition border border-slate-300 dark:border-slate-700 shadow-sm"
           >
             Track
           </button>

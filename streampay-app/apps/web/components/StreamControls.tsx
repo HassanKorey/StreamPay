@@ -164,8 +164,8 @@ export function StreamControls({
 
   if (stream.cancelled) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-center">
-        <span className="text-sm font-semibold text-rose-400">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-center transition-colors">
+        <span className="text-sm font-semibold text-rose-500 dark:text-rose-400">
           This payment stream is cancelled and closed.
         </span>
       </div>
@@ -173,15 +173,15 @@ export function StreamControls({
   }
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-4 shadow-sm transition-colors">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+        <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
           Actions
         </h3>
         {connectedAddress && (
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
             Role:{" "}
-            <span className="font-semibold text-emerald-400">
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
               {isPayer ? "Payer (Sender)" : isPayee ? "Payee (Recipient)" : "Viewer"}
             </span>
           </span>
@@ -189,13 +189,13 @@ export function StreamControls({
       </div>
 
       {error && (
-        <div className="text-xs text-rose-300 bg-rose-500/10 border border-rose-500/20 rounded-xl p-3">
+        <div className="text-xs text-rose-600 dark:text-rose-300 bg-rose-500/10 border border-rose-500/20 rounded-xl p-3">
           {error}
         </div>
       )}
 
       {successMessage && (
-        <div className="text-xs text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3">
+        <div className="text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3">
           {successMessage}
         </div>
       )}
@@ -207,7 +207,7 @@ export function StreamControls({
           onClick={handleExecutePayment}
           disabled={loadingAction !== null || amountOwed <= 0n}
           aria-label="Execute stream settlement payment"
-          className="bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 disabled:text-slate-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-sm transition shadow-lg shadow-emerald-500/10 flex items-center gap-2"
+          className="bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-100 disabled:text-slate-400 dark:disabled:bg-slate-800 dark:disabled:text-slate-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-sm transition shadow-lg shadow-emerald-500/10 flex items-center gap-2"
         >
           {loadingAction === "execute" ? (
             <span>Settling...</span>
@@ -223,7 +223,7 @@ export function StreamControls({
             onClick={handlePause}
             disabled={loadingAction !== null}
             aria-label="Pause stream"
-            className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition"
+            className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition"
           >
             {loadingAction === "pause" ? "Pausing..." : "Pause Stream"}
           </button>
@@ -236,7 +236,7 @@ export function StreamControls({
             onClick={handleResume}
             disabled={loadingAction !== null}
             aria-label="Resume stream"
-            className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition"
+            className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition"
           >
             {loadingAction === "resume" ? "Resuming..." : "Resume Stream"}
           </button>
@@ -249,7 +249,7 @@ export function StreamControls({
             onClick={() => setShowRateModal(true)}
             disabled={loadingAction !== null}
             aria-label="Update stream rate"
-            className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-4 py-2.5 rounded-xl text-sm transition border border-slate-700"
+            className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-4 py-2.5 rounded-xl text-sm transition border border-slate-300 dark:border-slate-700"
           >
             Update Rate
           </button>
@@ -262,7 +262,7 @@ export function StreamControls({
             onClick={handleCancel}
             disabled={loadingAction !== null}
             aria-label="Cancel stream"
-            className="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition ml-auto"
+            className="bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30 font-semibold px-4 py-2.5 rounded-xl text-sm transition ml-auto"
           >
             {loadingAction === "cancel" ? "Cancelling..." : "Cancel Stream"}
           </button>
@@ -273,16 +273,16 @@ export function StreamControls({
       {showRateModal && (
         <form
           onSubmit={handleUpdateRate}
-          className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 mt-3"
+          className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl space-y-3 mt-3 transition-colors"
         >
           <div className="flex justify-between items-center">
-            <span className="text-xs font-semibold text-slate-300">
+            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
               Update Per-Second Rate
             </span>
             <button
               type="button"
               onClick={() => setShowRateModal(false)}
-              className="text-slate-400 hover:text-white text-xs"
+              className="text-slate-400 hover:text-slate-700 dark:hover:text-white text-xs"
             >
               Cancel
             </button>
@@ -296,7 +296,7 @@ export function StreamControls({
               placeholder="e.g. 0.2"
               value={newRateInput}
               onChange={(e) => setNewRateInput(e.target.value)}
-              className="bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-sm text-white font-mono flex-1 focus:outline-none focus:border-emerald-500"
+              className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-1.5 text-sm text-slate-900 dark:text-white font-mono flex-1 focus:outline-none focus:border-emerald-500"
             />
             <button
               type="submit"

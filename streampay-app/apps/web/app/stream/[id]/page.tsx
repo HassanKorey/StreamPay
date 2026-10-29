@@ -18,9 +18,9 @@ export default function StreamDetailPage() {
   if (isLoading) {
     return (
       <div className="space-y-6 max-w-3xl mx-auto py-8">
-        <div className="h-6 bg-slate-900 rounded w-32 animate-pulse" />
-        <div className="h-64 bg-slate-900 border border-slate-800 rounded-3xl animate-pulse" />
-        <div className="h-44 bg-slate-900 border border-slate-800 rounded-3xl animate-pulse" />
+        <div className="h-6 bg-slate-200 dark:bg-slate-900 rounded w-32 animate-pulse" />
+        <div className="h-64 bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-3xl animate-pulse" />
+        <div className="h-44 bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-3xl animate-pulse" />
       </div>
     );
   }
@@ -28,17 +28,17 @@ export default function StreamDetailPage() {
   if (error || !stream) {
     return (
       <div className="max-w-xl mx-auto py-12 text-center space-y-4">
-        <div className="w-16 h-16 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+        <div className="w-16 h-16 bg-rose-500/10 text-rose-500 dark:text-rose-400 border border-rose-500/20 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
           !
         </div>
-        <h2 className="text-xl font-bold text-white">Stream Not Found</h2>
-        <p className="text-xs text-slate-400 max-w-sm mx-auto">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white">Stream Not Found</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
           {error || "Could not load stream details from Stellar Soroban Testnet."}
         </p>
         <div className="pt-2">
           <Link
             href="/"
-            className="inline-block bg-slate-800 hover:bg-slate-700 text-white font-semibold px-4 py-2 rounded-xl text-xs transition"
+            className="inline-block bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-semibold px-4 py-2 rounded-xl text-xs transition border border-slate-200 dark:border-slate-700"
           >
             ← Return to Dashboard
           </Link>
@@ -53,11 +53,11 @@ export default function StreamDetailPage() {
       <div className="flex items-center justify-between">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-emerald-400 font-medium transition"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium transition"
         >
           ← Back to Dashboard
         </Link>
-        <span className="font-mono text-xs text-slate-500">
+        <span className="font-mono text-xs text-slate-400 dark:text-slate-500">
           Stream ID #{stream.id.toString()}
         </span>
       </div>
@@ -79,36 +79,36 @@ export default function StreamDetailPage() {
       />
 
       {/* Stream Details Grid */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-5 shadow-sm transition-colors">
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
           Stream Ledger Records
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-          <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
-            <span className="block text-slate-500 mb-1">Payer (Sender)</span>
-            <span className="font-mono text-slate-200 break-all select-all font-semibold">
+          <div className="p-4 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80">
+            <span className="block text-slate-500 dark:text-slate-400 mb-1">Payer (Sender)</span>
+            <span className="font-mono text-slate-800 dark:text-slate-200 break-all select-all font-semibold">
               {stream.payer}
             </span>
           </div>
 
-          <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
-            <span className="block text-slate-500 mb-1">Payee (Recipient)</span>
-            <span className="font-mono text-slate-200 break-all select-all font-semibold">
+          <div className="p-4 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80">
+            <span className="block text-slate-500 dark:text-slate-400 mb-1">Payee (Recipient)</span>
+            <span className="font-mono text-slate-800 dark:text-slate-200 break-all select-all font-semibold">
               {stream.payee}
             </span>
           </div>
 
-          <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
-            <span className="block text-slate-500 mb-1">Total Paid To Date</span>
-            <span className="font-mono text-emerald-400 text-base font-extrabold">
+          <div className="p-4 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80">
+            <span className="block text-slate-500 dark:text-slate-400 mb-1">Total Paid To Date</span>
+            <span className="font-mono text-emerald-600 dark:text-emerald-400 text-base font-extrabold">
               {formatUnits(stream.totalPaid, USDC_DECIMALS)} USDC
             </span>
           </div>
 
-          <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
-            <span className="block text-slate-500 mb-1">Accrual Timeline</span>
-            <div className="font-mono text-slate-300 space-y-0.5">
+          <div className="p-4 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80">
+            <span className="block text-slate-500 dark:text-slate-400 mb-1">Accrual Timeline</span>
+            <div className="font-mono text-slate-700 dark:text-slate-300 space-y-0.5">
               <div>Started: Ledger #{stream.startLedger}</div>
               <div>Last Settled: Ledger #{stream.lastPaidLedger}</div>
             </div>

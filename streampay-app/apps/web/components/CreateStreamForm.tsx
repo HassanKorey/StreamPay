@@ -100,23 +100,23 @@ export function CreateStreamForm() {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-xl mx-auto shadow-2xl">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-xl mx-auto shadow-xl dark:shadow-2xl transition-colors">
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-white mb-1">Create Payment Stream</h2>
-        <p className="text-xs text-slate-400">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-1">Create Payment Stream</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Open a continuous, non-custodial streaming transfer of USDC to any Stellar recipient.
         </p>
       </div>
 
       {createdStreamId ? (
         <div className="text-center py-8 space-y-4">
-          <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+          <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
             ✓
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">Stream Created!</h3>
-            <p className="text-sm text-slate-400 mt-1">
-              Stream ID <span className="font-mono font-bold text-emerald-400">#{createdStreamId}</span> is now actively accruing on Stellar.
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Stream Created!</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Stream ID <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">#{createdStreamId}</span> is now actively accruing on Stellar.
             </p>
           </div>
           <div className="pt-2 flex justify-center gap-3">
@@ -134,7 +134,7 @@ export function CreateStreamForm() {
                 setPayee("");
                 setNote("");
               }}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2.5 rounded-xl text-sm transition"
+              className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold px-4 py-2.5 rounded-xl text-sm transition border border-slate-200 dark:border-slate-700"
             >
               Create Another
             </button>
@@ -143,13 +143,13 @@ export function CreateStreamForm() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="p-3.5 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-300">
+            <div className="p-3.5 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-600 dark:text-rose-300">
               {error}
             </div>
           )}
 
           <div>
-            <label htmlFor="payee" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            <label htmlFor="payee" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
               Recipient Address (Payee)
             </label>
             <input
@@ -159,13 +159,13 @@ export function CreateStreamForm() {
               placeholder="G... or C..."
               value={payee}
               onChange={(e) => setPayee(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm text-white font-mono placeholder:text-slate-600 focus:outline-none transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none transition"
             />
           </div>
 
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label htmlFor="rate" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <label htmlFor="rate" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 Payment Rate (USDC per second)
               </label>
               <div className="flex gap-1.5">
@@ -176,8 +176,8 @@ export function CreateStreamForm() {
                     onClick={() => handlePresetRate(preset)}
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded-lg border transition ${
                       rate === preset
-                        ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
-                        : "bg-slate-800/80 text-slate-400 border-slate-700 hover:text-white"
+                        ? "bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/40"
+                        : "bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     {preset}
@@ -195,9 +195,9 @@ export function CreateStreamForm() {
                 placeholder="e.g. 0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm text-white font-mono placeholder:text-slate-600 focus:outline-none transition pr-16"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white font-mono placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none transition pr-16"
               />
-              <span className="absolute right-4 top-3 text-xs font-bold text-slate-500">
+              <span className="absolute right-4 top-3 text-xs font-bold text-slate-400 dark:text-slate-500">
                 USDC/s
               </span>
             </div>
@@ -207,7 +207,7 @@ export function CreateStreamForm() {
           </div>
 
           <div>
-            <label htmlFor="note" className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            <label htmlFor="note" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
               Optional Note / Label
             </label>
             <input
@@ -216,7 +216,7 @@ export function CreateStreamForm() {
               placeholder="e.g. Engineering Retainer, Creator Grant, Salary"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none transition"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 focus:border-emerald-500 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none transition"
             />
           </div>
 
@@ -224,7 +224,7 @@ export function CreateStreamForm() {
             <button
               type="button"
               onClick={() => connect()}
-              className="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-3.5 rounded-xl text-sm transition"
+              className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold py-3.5 rounded-xl text-sm transition"
             >
               Connect Freighter to Continue
             </button>
