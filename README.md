@@ -114,12 +114,12 @@ Per the Wave 11 application requirements, an end-to-end on-chain verification cy
 
 ## Live Deployment (Vercel)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HassanKorey/StreamPay&root-directory=streampay-app/apps/web&env=NEXT_PUBLIC_RPC_URL,NEXT_PUBLIC_NETWORK_PASSPHRASE,NEXT_PUBLIC_CONTRACT_ID,NEXT_PUBLIC_USDC_ADDRESS,NEXT_PUBLIC_HORIZON_URL)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HassanKorey/StreamPay&root-directory=streampay-app&env=NEXT_PUBLIC_RPC_URL,NEXT_PUBLIC_NETWORK_PASSPHRASE,NEXT_PUBLIC_CONTRACT_ID,NEXT_PUBLIC_USDC_ADDRESS,NEXT_PUBLIC_HORIZON_URL)
 
 To deploy the web application manually:
 
 1. Import the repository on [Vercel](https://vercel.com/new).
-2. Set the **Root Directory** to `streampay-app/apps/web`.
+2. Set the **Root Directory** to `streampay-app` (or leave as repository root).
 3. Add the following Environment Variables:
    - `NEXT_PUBLIC_RPC_URL`: `https://soroban-testnet.stellar.org`
    - `NEXT_PUBLIC_NETWORK_PASSPHRASE`: `Test SDF Network ; September 2015`
