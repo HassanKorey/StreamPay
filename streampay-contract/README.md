@@ -81,7 +81,6 @@ make check
 | **RPC Endpoint** | `https://soroban-testnet.stellar.org` |
 | **StreamPay Contract ID** | [`CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
 | **SEP-41 USDC Contract ID** | [`CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`](https://stellar.expert/explorer/testnet/contract/CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC) |
-| **Admin Address** | [`GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A`](https://stellar.expert/explorer/testnet/account/GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A) |
 | **Stellar Expert Explorer** | [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
 
 ---

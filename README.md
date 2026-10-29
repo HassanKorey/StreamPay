@@ -96,7 +96,6 @@ StreamPay is deployed, initialized, and verified on Stellar Soroban Testnet:
 |---|---|
 | **StreamPay Contract** | [`CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
 | **SEP-41 USDC Token** | [`CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`](https://stellar.expert/explorer/testnet/contract/CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC) |
-| **Admin Deployer** | [`GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A`](https://stellar.expert/explorer/testnet/account/GCJUT7C3IVYF4MDL2ZSN52GX62OI7UKGEZKUW4IZGAHQZJ63QLQHNZ4A) |
 | **Testnet RPC** | `https://soroban-testnet.stellar.org` |
 | **Testnet Network Passphrase** | `Test SDF Network ; September 2015` |
 
