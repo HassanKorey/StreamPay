@@ -73,11 +73,11 @@ jobs:
       - name: Typecheck SDK
         run: pnpm --filter @streampay/sdk typecheck
 
-      - name: Run SDK unit tests
-        run: pnpm --filter @streampay/sdk test
-
       - name: Build SDK package
         run: pnpm --filter @streampay/sdk build
+
+      - name: Run SDK unit tests
+        run: pnpm --filter @streampay/sdk test
 
       - name: Build Next.js 15 production web app
         env:

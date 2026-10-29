@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test test/sdk.test.ts"
+    "test": "tsc && node --test test/sdk.test.ts"
   },
   "dependencies": {
     "@stellar/stellar-sdk": "^14.0.0"
