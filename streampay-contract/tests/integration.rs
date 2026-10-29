@@ -51,8 +51,7 @@ impl<'a> TestSetup<'a> {
     }
 
     fn init(&self) {
-        self.client
-            .initialize(&self.admin, &self.token_address);
+        self.client.initialize(&self.admin, &self.token_address);
     }
 }
 
@@ -79,16 +78,22 @@ fn test_create_stream_happy_path_and_zero_rate_rejection() {
     setup.init();
 
     // Zero rate rejected
-    let res = setup.client.try_create_stream(&setup.payer, &setup.payee, &0);
+    let res = setup
+        .client
+        .try_create_stream(&setup.payer, &setup.payee, &0);
     assert_eq!(res, Err(Ok(ContractError::InvalidRate)));
 
     // Negative rate rejected
-    let res = setup.client.try_create_stream(&setup.payer, &setup.payee, &-100);
+    let res = setup
+        .client
+        .try_create_stream(&setup.payer, &setup.payee, &-100);
     assert_eq!(res, Err(Ok(ContractError::InvalidRate)));
 
     // Happy path create
     let rate = 10_000_000i128; // 1 USDC/ledger
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
     assert_eq!(stream_id, 1);
 
     let stream = setup.client.get_stream(&stream_id);
@@ -112,12 +117,12 @@ fn test_execute_payment_after_n_ledgers() {
     setup.init();
 
     let rate = 1_000_000i128; // 0.1 USDC/ledger
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
     // Fund payer with 1,000 USDC
-    setup
-        .token_admin_client
-        .mint(&setup.payer, &10_000_000_000);
+    setup.token_admin_client.mint(&setup.payer, &10_000_000_000);
 
     // Advance 50 ledgers
     let start = setup.env.ledger().sequence();
@@ -157,11 +162,11 @@ fn test_pause_and_resume() {
     setup.init();
 
     let rate = 2_000_000i128;
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
-    setup
-        .token_admin_client
-        .mint(&setup.payer, &10_000_000_000);
+    setup.token_admin_client.mint(&setup.payer, &10_000_000_000);
 
     // Advance 10 ledgers
     let start = setup.env.ledger().sequence();
@@ -215,9 +220,7 @@ fn test_update_rate() {
         .client
         .create_stream(&setup.payer, &setup.payee, &initial_rate);
 
-    setup
-        .token_admin_client
-        .mint(&setup.payer, &10_000_000_000);
+    setup.token_admin_client.mint(&setup.payer, &10_000_000_000);
 
     // Advance 10 ledgers
     let start = setup.env.ledger().sequence();
@@ -248,11 +251,11 @@ fn test_cancel_by_payer() {
     setup.init();
 
     let rate = 1_000_000i128;
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
-    setup
-        .token_admin_client
-        .mint(&setup.payer, &10_000_000_000);
+    setup.token_admin_client.mint(&setup.payer, &10_000_000_000);
 
     // Advance 15 ledgers
     let start = setup.env.ledger().sequence();
@@ -291,11 +294,11 @@ fn test_cancel_by_payee() {
     setup.init();
 
     let rate = 1_000_000i128;
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
-    setup
-        .token_admin_client
-        .mint(&setup.payer, &10_000_000_000);
+    setup.token_admin_client.mint(&setup.payer, &10_000_000_000);
 
     // Advance 25 ledgers
     let start = setup.env.ledger().sequence();
@@ -316,7 +319,9 @@ fn test_unauthorized_attempts() {
     setup.init();
 
     let rate = 1_000_000i128;
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
     // Random attacker address
     let attacker = Address::generate(&setup.env);
@@ -334,7 +339,9 @@ fn test_insufficient_balance() {
     setup.init();
 
     let rate = 1_000_000i128;
-    let stream_id = setup.client.create_stream(&setup.payer, &setup.payee, &rate);
+    let stream_id = setup
+        .client
+        .create_stream(&setup.payer, &setup.payee, &rate);
 
     // Payer has 0 tokens
     let start = setup.env.ledger().sequence();

@@ -201,9 +201,7 @@ impl StreamPayContract {
             PERSISTENT_EXTEND_TO,
         );
 
-        let next_id = stream_id
-            .checked_add(1)
-            .ok_or(ContractError::Overflow)?;
+        let next_id = stream_id.checked_add(1).ok_or(ContractError::Overflow)?;
         env.storage()
             .persistent()
             .set(&DataKey::NextStreamId, &next_id);
@@ -469,10 +467,7 @@ impl StreamPayContract {
     }
 
     /// Internal helper that computes accrued payment and transfers tokens from payer to payee.
-    fn settle_accrued_internal(
-        env: &Env,
-        stream: &mut Stream,
-    ) -> Result<i128, ContractError> {
+    fn settle_accrued_internal(env: &Env, stream: &mut Stream) -> Result<i128, ContractError> {
         if stream.paused || stream.cancelled {
             return Ok(0);
         }
@@ -501,13 +496,11 @@ impl StreamPayContract {
             if token_client
                 .try_transfer_from(&contract_address, &stream.payer, &stream.payee, &amount)
                 .is_err()
-            {
-                if token_client
+                && token_client
                     .try_transfer(&stream.payer, &stream.payee, &amount)
                     .is_err()
-                {
-                    return Err(ContractError::InsufficientBalance);
-                }
+            {
+                return Err(ContractError::InsufficientBalance);
             }
 
             let from_ledger = stream.last_paid_ledger;
