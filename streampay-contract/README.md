@@ -79,9 +79,8 @@ make check
 |---|---|
 | **Network** | Stellar Testnet (Protocol 29) |
 | **RPC Endpoint** | `https://soroban-testnet.stellar.org` |
-| **StreamPay Contract ID** | [`CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
-| **SEP-41 USDC Contract ID** | [`CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`](https://stellar.expert/explorer/testnet/contract/CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC) |
-| **Stellar Expert Explorer** | [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
+| **StreamPay Contract ID** | `C...` (Configured via `NEXT_PUBLIC_CONTRACT_ID`) |
+| **SEP-41 USDC Contract ID** | `C...` (Configured via `NEXT_PUBLIC_USDC_ADDRESS`) |
 
 ---
 

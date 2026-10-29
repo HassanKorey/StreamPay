@@ -21,8 +21,6 @@ StreamPay brings continuous payment streaming to the Stellar network. Instead of
 
 ```
 StreamPay/
-├── StreamPay_1_Contract_Specification.pdf   # Document 1: Smart contract specification
-├── StreamPay_2_App_Specification.pdf        # Document 2: Monorepo & application specification
 ├── streampay-contract/                      # Soroban Rust smart contract
 │   ├── Cargo.toml                           # soroban-sdk v30.0.0-rc.1, cdylib + rlib
 │   ├── Makefile                             # build, test, check, clean
@@ -94,8 +92,8 @@ StreamPay is deployed, initialized, and verified on Stellar Soroban Testnet:
 
 | Resource | Address / ID |
 |---|---|
-| **StreamPay Contract** | [`CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`](https://stellar.expert/explorer/testnet/contract/CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX) |
-| **SEP-41 USDC Token** | [`CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`](https://stellar.expert/explorer/testnet/contract/CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC) |
+| **StreamPay Contract** | `C...` (Configured via `NEXT_PUBLIC_CONTRACT_ID`) |
+| **SEP-41 USDC Token** | `C...` (Configured via `NEXT_PUBLIC_USDC_ADDRESS`) |
 | **Testnet RPC** | `https://soroban-testnet.stellar.org` |
 | **Testnet Network Passphrase** | `Test SDF Network ; September 2015` |
 
@@ -103,11 +101,11 @@ StreamPay is deployed, initialized, and verified on Stellar Soroban Testnet:
 
 Per the Wave 11 application requirements, an end-to-end on-chain verification cycle (`create_stream` → ledger accrual → `execute_payment`) was executed and confirmed on Stellar Testnet:
 
-| Stage | Details | Explorer Link |
+| Stage | Details | Verification Mode |
 |---|---|---|
-| **Create Stream** | Stream #1 created at ledger 5435330 (0.1 USDC/s) | [`eb6ced1e...`](https://stellar.expert/explorer/testnet/tx/eb6ced1ef7243bcf9e0b10b7933846282d6acb253a192ed49013ddea95d378ed) |
-| **Ledger Accrual** | Accrued across 5 ledgers (5435330 → 5435335) | Testnet Consensus |
-| **Execute Payment** | Settled 5,000,000 stroops (0.5000 USDC) to Payee | [`b3125440...`](https://stellar.expert/explorer/testnet/tx/b3125440aaf97a527e19bf0e0d551948cd76767fa098b8d586687c3bf90537d0) |
+| **Create Stream** | Stream created at ledger tick (0.1 USDC/s) | Verified on Stellar Testnet Consensus |
+| **Ledger Accrual** | Accrued across multiple ledger sequence ticks | Verified on Stellar Testnet Consensus |
+| **Execute Payment** | Settled stroops directly to Payee | Confirmed via `scripts/verify-cycle.mjs` |
 
 ---
 
@@ -122,8 +120,8 @@ To deploy the web application manually:
 3. Add the following Environment Variables:
    - `NEXT_PUBLIC_RPC_URL`: `https://soroban-testnet.stellar.org`
    - `NEXT_PUBLIC_NETWORK_PASSPHRASE`: `Test SDF Network ; September 2015`
-   - `NEXT_PUBLIC_CONTRACT_ID`: `CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX`
-   - `NEXT_PUBLIC_USDC_ADDRESS`: `CBGRKQQHFIVR6OXKTSOFONC53FFYMTZDAHJBHWQT6PC6EXQQFZ25Y5JC`
+   - `NEXT_PUBLIC_CONTRACT_ID`: `your_streampay_contract_id_here`
+   - `NEXT_PUBLIC_USDC_ADDRESS`: `your_usdc_asset_contract_id_here`
    - `NEXT_PUBLIC_HORIZON_URL`: `https://horizon-testnet.stellar.org`
 4. Deploy!
 
