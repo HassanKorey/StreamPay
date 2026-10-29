@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd streampay-app && pnpm install --frozen-lockfile",
-  "buildCommand": "cd streampay-app && pnpm build",
-  "outputDirectory": "streampay-app/apps/web/.next",
-  "framework": "nextjs"
-}

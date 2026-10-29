@@ -8,6 +8,7 @@ import {
 } from "@streampay/sdk";
 import freighter from "@stellar/freighter-api";
 
+
 export const DEFAULT_CONTRACT_ID =
   process.env.NEXT_PUBLIC_CONTRACT_ID || "CCMKR6Z7WICENMZFAXR6VVWCM2TLHSKXOF5Q6ODJC4LHGMCJ5ZWKJECX";
 export const DEFAULT_RPC_URL = process.env.NEXT_PUBLIC_RPC_URL || TESTNET_RPC_URL;
@@ -145,3 +146,4 @@ export function removeStoredStreamId(id: string): void {
 }
 
 export { formatUnits, parseUnits, USDC_DECIMALS };
+
